@@ -93,7 +93,17 @@ namespace BaseData9 {
 
 
 	private: System::Windows::Forms::VScrollBar^ vScrollBar1;
-	private: System::Windows::Forms::Label^ label8;
+
+	private: System::Windows::Forms::Button^ buttonCheckTTl;
+	private: System::Windows::Forms::GroupBox^ groupBoxLog;
+	private: System::Windows::Forms::Label^ labelLog;
+	private: System::Windows::Forms::Label^ label9;
+	private: System::Windows::Forms::Label^ label5;
+	private: System::Windows::Forms::Label^ labelOprog;
+
+
+	private: System::Windows::Forms::Label^ labelGide;
+
 	protected:
 
 	protected:
@@ -130,6 +140,8 @@ namespace BaseData9 {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(MyForm::typeid));
+			this->vScrollBar1 = (gcnew System::Windows::Forms::VScrollBar());
 			this->version = (gcnew System::Windows::Forms::Label());
 			this->menu = (gcnew System::Windows::Forms::MenuStrip());
 			this->pathTTLToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
@@ -150,6 +162,7 @@ namespace BaseData9 {
 			this->labelCheckTTL = (gcnew System::Windows::Forms::Label());
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->label3 = (gcnew System::Windows::Forms::Label());
+			this->buttonCheckTTl = (gcnew System::Windows::Forms::Button());
 			this->groupBoxUnPatñh = (gcnew System::Windows::Forms::GroupBox());
 			this->label6 = (gcnew System::Windows::Forms::Label());
 			this->buttonStartUnPath = (gcnew System::Windows::Forms::Button());
@@ -157,17 +170,35 @@ namespace BaseData9 {
 			this->checkBoxHostsUn = (gcnew System::Windows::Forms::CheckBox());
 			this->checkBoxTTLUn = (gcnew System::Windows::Forms::CheckBox());
 			this->groupBoxOprog = (gcnew System::Windows::Forms::GroupBox());
+			this->label9 = (gcnew System::Windows::Forms::Label());
+			this->label5 = (gcnew System::Windows::Forms::Label());
+			this->labelOprog = (gcnew System::Windows::Forms::Label());
 			this->label7 = (gcnew System::Windows::Forms::Label());
 			this->groupBoxIntruction = (gcnew System::Windows::Forms::GroupBox());
-			this->vScrollBar1 = (gcnew System::Windows::Forms::VScrollBar());
-			this->label8 = (gcnew System::Windows::Forms::Label());
+			this->labelGide = (gcnew System::Windows::Forms::Label());
+			this->groupBoxLog = (gcnew System::Windows::Forms::GroupBox());
+			this->labelLog = (gcnew System::Windows::Forms::Label());
 			this->menu->SuspendLayout();
 			this->groupBoxPatñh->SuspendLayout();
 			this->groupBoxInfoTtl->SuspendLayout();
 			this->groupBoxUnPatñh->SuspendLayout();
 			this->groupBoxOprog->SuspendLayout();
 			this->groupBoxIntruction->SuspendLayout();
+			this->groupBoxLog->SuspendLayout();
 			this->SuspendLayout();
+			// 
+			// vScrollBar1
+			// 
+			this->vScrollBar1->LargeChange = 100;
+			this->vScrollBar1->Location = System::Drawing::Point(324, 14);
+			this->vScrollBar1->Maximum = 550;
+			this->vScrollBar1->Minimum = -16;
+			this->vScrollBar1->Name = L"vScrollBar1";
+			this->vScrollBar1->Size = System::Drawing::Size(17, 329);
+			this->vScrollBar1->SmallChange = 30;
+			this->vScrollBar1->TabIndex = 1;
+			this->vScrollBar1->Value = -16;
+			this->vScrollBar1->Scroll += gcnew System::Windows::Forms::ScrollEventHandler(this, &MyForm::vScrollBar1_Scroll);
 			// 
 			// version
 			// 
@@ -187,7 +218,7 @@ namespace BaseData9 {
 			});
 			this->menu->Location = System::Drawing::Point(0, 0);
 			this->menu->Name = L"menu";
-			this->menu->Size = System::Drawing::Size(1228, 24);
+			this->menu->Size = System::Drawing::Size(485, 24);
 			this->menu->TabIndex = 1;
 			this->menu->Text = L"menuStrip1";
 			this->menu->ItemClicked += gcnew System::Windows::Forms::ToolStripItemClickedEventHandler(this, &MyForm::menu_ItemClicked);
@@ -246,7 +277,7 @@ namespace BaseData9 {
 			this->groupBoxPatñh->Controls->Add(this->buttonStartPath);
 			this->groupBoxPatñh->Controls->Add(this->checkBoxHosts);
 			this->groupBoxPatñh->Controls->Add(this->checkBoxTTL);
-			this->groupBoxPatñh->Location = System::Drawing::Point(66, 27);
+			this->groupBoxPatñh->Location = System::Drawing::Point(66, 43);
 			this->groupBoxPatñh->Name = L"groupBoxPatñh";
 			this->groupBoxPatñh->Size = System::Drawing::Size(344, 225);
 			this->groupBoxPatñh->TabIndex = 2;
@@ -324,11 +355,13 @@ namespace BaseData9 {
 			this->groupBoxInfoTtl->Controls->Add(this->labelCheckTTL);
 			this->groupBoxInfoTtl->Controls->Add(this->label4);
 			this->groupBoxInfoTtl->Controls->Add(this->label3);
-			this->groupBoxInfoTtl->Location = System::Drawing::Point(445, 27);
+			this->groupBoxInfoTtl->Controls->Add(this->buttonCheckTTl);
+			this->groupBoxInfoTtl->Location = System::Drawing::Point(66, 43);
 			this->groupBoxInfoTtl->Name = L"groupBoxInfoTtl";
 			this->groupBoxInfoTtl->Size = System::Drawing::Size(344, 225);
 			this->groupBoxInfoTtl->TabIndex = 3;
 			this->groupBoxInfoTtl->TabStop = false;
+			this->groupBoxInfoTtl->Visible = false;
 			this->groupBoxInfoTtl->Enter += gcnew System::EventHandler(this, &MyForm::groupBoxInfoTtl_Enter);
 			// 
 			// labelCheckTTL
@@ -344,7 +377,7 @@ namespace BaseData9 {
 			// label4
 			// 
 			this->label4->AutoSize = true;
-			this->label4->Location = System::Drawing::Point(139, 85);
+			this->label4->Location = System::Drawing::Point(134, 85);
 			this->label4->Name = L"label4";
 			this->label4->Size = System::Drawing::Size(39, 13);
 			this->label4->TabIndex = 1;
@@ -359,6 +392,18 @@ namespace BaseData9 {
 			this->label3->TabIndex = 0;
 			this->label3->Text = L"Ïðîâåðêà TTL";
 			// 
+			// buttonCheckTTl
+			// 
+			this->buttonCheckTTl->BackColor = System::Drawing::Color::Transparent;
+			this->buttonCheckTTl->Location = System::Drawing::Point(117, 135);
+			this->buttonCheckTTl->Name = L"buttonCheckTTl";
+			this->buttonCheckTTl->Size = System::Drawing::Size(90, 23);
+			this->buttonCheckTTl->TabIndex = 2;
+			this->buttonCheckTTl->Text = L"Ïðîâåðèòü";
+			this->buttonCheckTTl->TextAlign = System::Drawing::ContentAlignment::TopCenter;
+			this->buttonCheckTTl->UseVisualStyleBackColor = false;
+			this->buttonCheckTTl->Click += gcnew System::EventHandler(this, &MyForm::buttonCheckTTl_Click);
+			// 
 			// groupBoxUnPatñh
 			// 
 			this->groupBoxUnPatñh->Controls->Add(this->label6);
@@ -366,11 +411,12 @@ namespace BaseData9 {
 			this->groupBoxUnPatñh->Controls->Add(this->progressBarUn);
 			this->groupBoxUnPatñh->Controls->Add(this->checkBoxHostsUn);
 			this->groupBoxUnPatñh->Controls->Add(this->checkBoxTTLUn);
-			this->groupBoxUnPatñh->Location = System::Drawing::Point(66, 279);
+			this->groupBoxUnPatñh->Location = System::Drawing::Point(66, 42);
 			this->groupBoxUnPatñh->Name = L"groupBoxUnPatñh";
-			this->groupBoxUnPatñh->Size = System::Drawing::Size(344, 218);
+			this->groupBoxUnPatñh->Size = System::Drawing::Size(344, 224);
 			this->groupBoxUnPatñh->TabIndex = 4;
 			this->groupBoxUnPatñh->TabStop = false;
+			this->groupBoxUnPatñh->Visible = false;
 			this->groupBoxUnPatñh->Enter += gcnew System::EventHandler(this, &MyForm::groupBoxUnPatñh_Enter);
 			// 
 			// label6
@@ -425,13 +471,48 @@ namespace BaseData9 {
 			// 
 			// groupBoxOprog
 			// 
+			this->groupBoxOprog->Controls->Add(this->label9);
+			this->groupBoxOprog->Controls->Add(this->label5);
+			this->groupBoxOprog->Controls->Add(this->labelOprog);
 			this->groupBoxOprog->Controls->Add(this->label7);
-			this->groupBoxOprog->Location = System::Drawing::Point(445, 280);
+			this->groupBoxOprog->Location = System::Drawing::Point(66, 42);
 			this->groupBoxOprog->Name = L"groupBoxOprog";
-			this->groupBoxOprog->Size = System::Drawing::Size(344, 217);
+			this->groupBoxOprog->Size = System::Drawing::Size(344, 226);
 			this->groupBoxOprog->TabIndex = 5;
 			this->groupBoxOprog->TabStop = false;
+			this->groupBoxOprog->Visible = false;
 			this->groupBoxOprog->Enter += gcnew System::EventHandler(this, &MyForm::groupBoxOprog_Enter);
+			// 
+			// label9
+			// 
+			this->label9->AutoSize = true;
+			this->label9->Location = System::Drawing::Point(20, 116);
+			this->label9->MaximumSize = System::Drawing::Size(300, 200);
+			this->label9->Name = L"label9";
+			this->label9->Size = System::Drawing::Size(158, 13);
+			this->label9->TabIndex = 1;
+			this->label9->Text = L"Ðàñïðîñòðîíÿåòñÿ áåñïëàòíî";
+			// 
+			// label5
+			// 
+			this->label5->AutoSize = true;
+			this->label5->Location = System::Drawing::Point(20, 151);
+			this->label5->MaximumSize = System::Drawing::Size(300, 200);
+			this->label5->Name = L"label5";
+			this->label5->Size = System::Drawing::Size(90, 13);
+			this->label5->TabIndex = 1;
+			this->label5->Text = L"Ñîçäàíî RuDark";
+			// 
+			// labelOprog
+			// 
+			this->labelOprog->AutoSize = true;
+			this->labelOprog->Location = System::Drawing::Point(20, 74);
+			this->labelOprog->MaximumSize = System::Drawing::Size(300, 200);
+			this->labelOprog->Name = L"labelOprog";
+			this->labelOprog->Size = System::Drawing::Size(298, 26);
+			this->labelOprog->TabIndex = 1;
+			this->labelOprog->Text = L"Ïîãðàììà ñëóæèò äëÿ îáõîäà îãðàíè÷åíèé îò îïåðàòîðà íà ðàçäà÷ó ìîáèëüíîãî èíòåðíå"
+				L"òà. ";
 			// 
 			// label7
 			// 
@@ -444,46 +525,65 @@ namespace BaseData9 {
 			// 
 			// groupBoxIntruction
 			// 
+			this->groupBoxIntruction->Controls->Add(this->labelGide);
 			this->groupBoxIntruction->Controls->Add(this->vScrollBar1);
-			this->groupBoxIntruction->Controls->Add(this->label8);
-			this->groupBoxIntruction->Location = System::Drawing::Point(833, 27);
+			this->groupBoxIntruction->Location = System::Drawing::Point(66, 32);
 			this->groupBoxIntruction->Name = L"groupBoxIntruction";
-			this->groupBoxIntruction->Size = System::Drawing::Size(344, 382);
+			this->groupBoxIntruction->Size = System::Drawing::Size(344, 381);
 			this->groupBoxIntruction->TabIndex = 5;
 			this->groupBoxIntruction->TabStop = false;
+			this->groupBoxIntruction->Visible = false;
 			this->groupBoxIntruction->Enter += gcnew System::EventHandler(this, &MyForm::groupBoxIntruction_Enter);
 			// 
-			// vScrollBar1
+			// labelGide
 			// 
-			this->vScrollBar1->Location = System::Drawing::Point(324, 16);
-			this->vScrollBar1->Name = L"vScrollBar1";
-			this->vScrollBar1->Size = System::Drawing::Size(17, 352);
-			this->vScrollBar1->TabIndex = 1;
-			this->vScrollBar1->Scroll += gcnew System::Windows::Forms::ScrollEventHandler(this, &MyForm::vScrollBar1_Scroll);
+			this->labelGide->AutoSize = true;
+			this->labelGide->Location = System::Drawing::Point(6, 16);
+			this->labelGide->MaximumSize = System::Drawing::Size(300, 0);
+			this->labelGide->Name = L"labelGide";
+			this->labelGide->Size = System::Drawing::Size(300, 780);
+			this->labelGide->TabIndex = 5;
+			this->labelGide->Text = resources->GetString(L"labelGide.Text");
+			this->labelGide->Click += gcnew System::EventHandler(this, &MyForm::labelGide_Click);
 			// 
-			// label8
+			// groupBoxLog
 			// 
-			this->label8->AutoSize = true;
-			this->label8->Location = System::Drawing::Point(127, 16);
-			this->label8->Name = L"label8";
-			this->label8->Size = System::Drawing::Size(67, 13);
-			this->label8->TabIndex = 0;
-			this->label8->Text = L"Èíñòðóêöèÿ";
+			this->groupBoxLog->Controls->Add(this->labelLog);
+			this->groupBoxLog->Location = System::Drawing::Point(66, 419);
+			this->groupBoxLog->Name = L"groupBoxLog";
+			this->groupBoxLog->Size = System::Drawing::Size(341, 100);
+			this->groupBoxLog->TabIndex = 6;
+			this->groupBoxLog->TabStop = false;
+			// 
+			// labelLog
+			// 
+			this->labelLog->AutoSize = true;
+			this->labelLog->Location = System::Drawing::Point(19, 16);
+			this->labelLog->MaximumSize = System::Drawing::Size(300, 0);
+			this->labelLog->Name = L"labelLog";
+			this->labelLog->Size = System::Drawing::Size(21, 13);
+			this->labelLog->TabIndex = 0;
+			this->labelLog->Text = L"log";
+			this->labelLog->Click += gcnew System::EventHandler(this, &MyForm::labelLog_Click);
 			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::WhiteSmoke;
-			this->ClientSize = System::Drawing::Size(1228, 531);
+			this->ClientSize = System::Drawing::Size(485, 561);
+			this->Controls->Add(this->groupBoxPatñh);
+			this->Controls->Add(this->groupBoxLog);
 			this->Controls->Add(this->groupBoxIntruction);
 			this->Controls->Add(this->groupBoxOprog);
 			this->Controls->Add(this->groupBoxUnPatñh);
 			this->Controls->Add(this->groupBoxInfoTtl);
-			this->Controls->Add(this->groupBoxPatñh);
 			this->Controls->Add(this->version);
 			this->Controls->Add(this->menu);
+			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->MaximizeBox = false;
+			this->MaximumSize = System::Drawing::Size(501, 601);
+			this->MinimumSize = System::Drawing::Size(500, 600);
 			this->Name = L"MyForm";
 			this->Text = L"Unlimited internet via TTL";
 			this->menu->ResumeLayout(false);
@@ -498,6 +598,8 @@ namespace BaseData9 {
 			this->groupBoxOprog->PerformLayout();
 			this->groupBoxIntruction->ResumeLayout(false);
 			this->groupBoxIntruction->PerformLayout();
+			this->groupBoxLog->ResumeLayout(false);
+			this->groupBoxLog->PerformLayout();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -534,6 +636,8 @@ private: System::Void buttonStartPath_Click(System::Object^ sender, System::Even
 
 private: System::Void buttonStartUnPath_Click(System::Object^ sender, System::EventArgs^ e);
 
+private: System::Void buttonCheckTTl_Click(System::Object^ sender, System::EventArgs^ e);
+
 private: System::Void checkBoxTTL_CheckedChanged(System::Object^ sender, System::EventArgs^ e);
 
 private: System::Void checkBoxHosts_CheckedChanged(System::Object^ sender, System::EventArgs^ e);
@@ -550,5 +654,8 @@ private: System::Void progressBarUn_Click(System::Object^ sender, System::EventA
 
 private: System::Void labelCheckTTL_Click(System::Object^ sender, System::EventArgs^ e);
 
+private: System::Void labelLog_Click(System::Object^ sender, System::EventArgs^ e);
+
+private: System::Void labelGide_Click(System::Object^ sender, System::EventArgs^ e);
 };
 }

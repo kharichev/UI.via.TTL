@@ -1,5 +1,4 @@
-F:\Документы\002 Разное\Программирование\BaseData\BaseData9\Debug\BaseData9.vcxprojAssemblyReference.cache
 F:\Документы\002 Разное\Программирование\BaseData\BaseData9\Debug\BaseData9.exe
-F:\Документы\002 Разное\Программирование\BaseData\BaseData9\Debug\BaseData9.pdb
 F:\Документы\002 Разное\Программирование\BaseData\BaseData9\Debug\BaseData9.MyForm.resources
 F:\Документы\002 Разное\Программирование\BaseData\BaseData9\Debug\BaseData9.vcxproj.GenerateResource.cache
+F:\Документы\002 Разное\Программирование\BaseData\BaseData9\Debug\BaseData9.vcxproj.AssemblyReference.cache
